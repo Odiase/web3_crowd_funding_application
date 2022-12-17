@@ -1,0 +1,70 @@
+// colors
+$standard_green : rgb(1, 127, 1);
+$light_green : rgb(10, 169, 10);
+
+
+.auth_form_container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+
+    form{
+        width: 80%;
+        max-width: 800px;
+        background-color: rgb(20,20,20);
+        padding: 30px 20px;
+
+        label{
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        div{
+            margin-bottom: 35px;
+
+            input{
+                padding: 10px;
+                width: 100%;
+                background-color: transparent;
+                border: none;
+                border-bottom: 1px solid rgb(200,200,200);
+                color: rgb(200,200,200);
+                font-size: 1.2rem;
+                transition: .3s;
+
+                &:focus{
+                    border-bottom: 1px solid $light_green;
+                }
+            }
+        }
+        button{
+            display: block;
+            padding: 15px;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            cursor: pointer;
+            background-color: $standard_green;
+            border: none;
+            color: white;
+            transition: .3s;
+
+            &:hover{
+                background-color: $light_green;
+            }
+        }
+
+        p{
+            text-align: center;
+            a{
+                color: white;
+                text-decoration: underline;
+                font-weight: bolder;
+            }
+        }
+    }
+}

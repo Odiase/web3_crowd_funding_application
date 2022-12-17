@@ -1,0 +1,100 @@
+// colors
+$standard_green : rgb(1, 127, 1);
+$light_green : rgb(10, 169, 10);
+
+
+main{
+    width: 100%;
+    margin-top: 100px;
+
+    .search_form{
+        width: 80%;
+        max-width: 800px;
+        margin: auto;
+
+        form{
+            width: 100%;
+            
+            input{
+                width: 70%;
+                padding: 7px;
+                border: none;
+                font-size: 1.2rem;
+            }
+            button{
+                border: none;
+                padding: 7px 10px;
+                margin-left: 5px;
+                background-color: $standard_green;
+                color: white;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+
+// search results stylings
+.search_results{
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+
+    h4{
+        margin-top: 5px;
+    }
+}
+.results_wrapper{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+    .result{
+        flex-basis: 65%;
+        background-color: rgb(20,20,20);
+        padding: 10px 15px;
+        margin: auto;
+        margin-bottom: 10px;
+
+        .result_flex{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button{
+            display: block;
+            margin-top: 20px;
+            border: none;
+            padding: 6px;
+            background-color: $standard_green;
+            transition: .3s;
+            cursor: pointer;
+            text-align: left;
+
+            a{
+                display: block;
+                width: 100%;
+                height: 100%;
+                font-weight: bold;
+                color: white;
+            }
+
+            &:hover{
+                background-color: $light_green;
+            }
+        }
+    }
+}
+
+@media (min-width: 850px){
+    .results_wrapper{
+        .result{
+            flex-basis: 45%;
+        }
+    }
+}

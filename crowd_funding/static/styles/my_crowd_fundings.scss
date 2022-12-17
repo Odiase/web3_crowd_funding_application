@@ -1,0 +1,49 @@
+// colors
+$standard_green : rgb(1, 127, 1);
+$light_green : rgb(10, 169, 10);
+
+
+.crowd_fundings{
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 130px;
+    padding: 15px;
+
+    .inner_wrapper{    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+
+        flex-direction: column;
+
+        .crowd_funding{
+            width: 100%;
+            padding: 20px;
+            background-color: rgb(20,20,20);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: .3s;
+            color: white;
+
+            &:hover{
+                background-color: rgb(40,40,40);
+            }
+
+            info{
+                flex-basis: 80%;
+            }
+
+            .amount{
+                text-align: center;
+                flex-basis: 10%;
+                margin-left: 8px;
+            }
+        }
+    }
+}

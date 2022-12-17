@@ -1,0 +1,85 @@
+// font imports 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@100;300;400;700;900&display=swap');
+
+
+// colors
+$standard_green : rgb(1, 127, 1);
+$light_green : rgb(6, 204, 6);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Cormorant Infant', serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+li{
+    list-style-type: none;
+}
+
+html{
+    font-size: 100%;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0; right: 0;
+    width: 100%;
+    background-color: transparent;
+    padding: 25px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 1px 5px black;
+
+    h1{
+        a{
+            color: white;
+        }
+
+        span{
+            color: $light_green;
+        }
+    }
+
+    nav{
+        ul{
+            display: flex;
+            align-items: center;
+
+            li{
+                margin-right: 10px;
+                padding: 8px;
+                background-color: rgb(10,10,10);
+                color: white;
+                border: 1px solid white;
+                border-radius: 8px;
+                transition: .3s;
+
+                &:hover{
+                    cursor: pointer;
+                    padding-left: 15px;
+                }
+
+                span{
+                    color: $light_green;
+                }
+
+                a{
+                    color: white;
+                }
+            }
+        }
+    }
+}

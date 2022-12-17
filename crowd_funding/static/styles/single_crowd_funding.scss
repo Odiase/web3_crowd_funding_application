@@ -1,0 +1,146 @@
+// colors
+$standard_green : rgb(1, 127, 1);
+$light_green : rgb(10, 169, 10);
+
+
+
+// mobile_styling
+.other_crowd_fundings{
+    margin-top: 100px;
+
+
+    .btn{
+        display: block;
+        width: 80%;
+        max-width: 500px;
+        margin: auto;
+        padding: 5px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: .3s;
+
+        &:hover{
+            background-color: rgb(220,220,220);
+        }
+    }
+
+    .hide_other_fundings{
+        display: none;
+    }
+
+    .crowd_fundings{
+        width: 80%;
+        margin: auto;
+        margin-top: 20px;
+        height: 0;
+        overflow: hidden;
+        transition: .3s;
+
+        a{
+            color: white;
+        }
+
+        .funding{
+            margin-bottom: 5px;
+            background-color: rgb(20,20,20);
+            padding: 10px 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+
+
+// single_crowd_section styling
+.single_crowd_section{
+    width: 80%;
+    margin: auto;
+    margin-top: 70px;
+
+    .crowd_fund_header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .crowd_fund_image{
+        margin-top: 20px;
+        width: 100%;
+        max-height: 500px;
+        overflow: hidden;
+        img{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .more_info{
+        margin-top: 60px;
+
+        div{
+            margin-bottom: 20px;
+
+            p{
+                &:nth-child(2){
+                    font-weight: bold;
+                    margin-top: 5px;
+                }
+            }
+        }
+
+        .description{
+            margin-top: 30px;
+        }
+    }
+
+    .delete_btn{
+        padding: 8px;
+        border: none;
+        color: white;
+        background-color: red;
+        font-weight: bold;
+        cursor: pointer;
+        transition: .3s;
+
+        &:hover{
+            background-color: rgb(255, 35, 35);
+        }
+    }
+}
+
+
+// delete form stylings
+.delete_form{
+    position: absolute;
+    z-index: 999;
+    top: -100%;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0,0,0,.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: .4s;
+    
+    h3{
+        margin-bottom: 20px;
+    }
+    button{
+        padding: 10px;
+        color: white;
+        border: none;
+        font-weight: bold;
+        background-color: $light_green;
+        cursor: pointer;
+    }
+    button[type = submit]{
+        background-color: red;
+        margin-right: 5px;
+    }
+}
