@@ -27,7 +27,12 @@
     {% block content %}
     <!-- Sign Up Section Starts -->
     <section class="auth_form_container">
-        <form action="">
+        {% for message in messages %}
+            <li>{{message}}</li>
+            <br>
+        {% endfor %}
+        <form action="" method="post">
+            {% csrf_token %}
             <div class="">
                 <label for=""> <span class="icon"><i class="fa fa-user"></i></span> &nbsp;Username</label>
                 <input type="text" placeholder="Enter Your Username" required name="username">

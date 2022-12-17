@@ -28,6 +28,10 @@
     <!-- Sign Up Section Starts -->
     <section class="auth_form_container">
         <form action="" method="post">
+            {% for message in messages %}
+            <li>{{message}}</li>
+            <br>
+            {% endfor %}
             {% csrf_token %}
             <div class="">
                 <label for=""> <span class="icon"><i class="fa fa-user"></i></span> &nbsp;Username</label>
@@ -41,7 +45,7 @@
 
             <div class="">
                 <label for=""><i class="fa fa-lock"></i> &nbsp; Password</label>
-                <input type="password" placeholder="Enter A Password" required name="password">
+                <input type="password" placeholder="Enter A Password" required name="password1">
             </div>
 
             <div class="">

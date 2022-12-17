@@ -1,9 +1,11 @@
 # third packages imports
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout, login
+from django.contrib.auth import logout, login, authenticate
+from django.contrib import messages
+from django.contrib.auth.models import User
 
 # local imports
-from .forms import UserForm
+# from .forms import UserForm
 
 
 # Create your views here.
@@ -12,16 +14,45 @@ def home(request):
 
 
 def sign_in(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+        else:
+            messages.info("Invalid credentials!")
+            return redirect("sign_in")
     return render(request, "login.html")
 
 
 def sign_up(request):
-    if request.method == "POST":
-        form = UserForm(request.POST)
+    if request.user.is_authenticated:
+        return redirect('home')
 
-        if form.is_valid():
-            form.save()
-            return redirect("sign_in")
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password1']
+        password2 = request.POST['password2']
+        email = request.POST['email']
+
+        if password != password2:
+            messages.error(request, "Your Passwords Don't Match.")
+            return redirect('sign_up')
+        if len(password) < 6:
+            messages.error(request, "Password Is Too Short.")
+            return redirect('sign_up')
+        
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "This User already Exists")
+            return redirect('sign_up')
+        
+        user = User.objects.create_user(username=username, password=password, email=email)
+        user.save()
+        messages.success(request, "Successfully Registered")
+        return redirect('sign_in')
     return render(request, "sign_up.html")
 
 
