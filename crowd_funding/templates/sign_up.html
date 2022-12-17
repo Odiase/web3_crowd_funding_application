@@ -27,7 +27,8 @@
     {% block content %}
     <!-- Sign Up Section Starts -->
     <section class="auth_form_container">
-        <form action="">
+        <form action="" method="post">
+            {% csrf_token %}
             <div class="">
                 <label for=""> <span class="icon"><i class="fa fa-user"></i></span> &nbsp;Username</label>
                 <input type="text" placeholder="Enter A Username" required name="username">
@@ -40,12 +41,12 @@
 
             <div class="">
                 <label for=""><i class="fa fa-lock"></i> &nbsp; Password</label>
-                <input type="text" placeholder="Enter A Password" required name="password">
+                <input type="password" placeholder="Enter A Password" required name="password">
             </div>
 
             <div class="">
                 <label for=""><i class="fa fa-lock"></i> &nbsp; Re-Enter Password</label>
-                <input type="text" placeholder="Re Enter your Password" required name="password2">
+                <input type="password" placeholder="Re Enter your Password" required name="password2">
             </div>
             <button type="submit">Create Account</button>
             <br>
