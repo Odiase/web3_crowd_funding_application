@@ -50,6 +50,12 @@ header{
 
         span{
             color: $light_green;
+            transition: .3s;
+
+            &:hover{
+                color:black;
+                border: $light_green;
+            }
         }
     }
 
