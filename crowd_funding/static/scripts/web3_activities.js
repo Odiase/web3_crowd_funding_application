@@ -4,7 +4,8 @@ async function check_and_connect() {
     /** Checking if a metamask extension is available and trying to access it.....of course with the user's permission */
     if (window.ethereum) {
         window.web3 = new Web3(ethereum);
-        console.log(window.web3);
+        var web3_obj = window.web3;
+        console.log(web3_obj)
         try {
             // trying to access the user web3 account on meta mask or any other web3 provider, if any
              var accounts = await window.web3.eth.requestAccounts();
