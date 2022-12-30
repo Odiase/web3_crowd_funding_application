@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
+# from django.contrib.auth.decorators import login_required
 
 # local imports
 # from .forms import UserForm
@@ -14,6 +15,10 @@ def home(request):
 
 
 def sign_in(request):
+    #checking if user is already logged in
+    if request.user.is_authenticated:
+        return redirect('home')
+
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
