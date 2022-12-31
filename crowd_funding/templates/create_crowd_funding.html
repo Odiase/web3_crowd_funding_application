@@ -26,6 +26,7 @@
 
     <!-- Custom Js scripts -->
     <script src="{% static 'scripts/web3_activities.js'%}" defer></script>
+    <script src="{% static 'scripts/crowd_fund.js'%}" defer></script>
     {% endblock scripts %}
 
     {% block title %}
@@ -35,7 +36,7 @@
 <body>
     {% block content %}
     <br><br><br><br><br><br><br><br><br><br>
-    <form action="">
+    <form action="" id="crowd_fund_form">
         <label for="">Name</label>
         <input type="text" placeholder="crowd fund name" name="fund_name">
         <br>
