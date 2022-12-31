@@ -21,7 +21,7 @@ async function get_wallet() {
          var accounts = await web3_obj.eth.requestAccounts();
          // redirects the user to the home page.
          if (accounts) {
-            window.location.replace('http://127.0.0.1:8000/sign_out');
+            window.location.replace('http://127.0.0.1:8000/crowd_fund/create');
          }
          console.log(accounts)
     } catch (error) {
@@ -31,20 +31,20 @@ async function get_wallet() {
     }
 }
 
-function is_connected() {
-    web3_obj = get_web3_object();
-    web3_obj.eth.requestAccounts()
-    .then(
-        function(accounts){
-            if (accounts.length > 0) {
-                window.location.assign('http://127.0.0.1:8000/sign_out');
-            }
-            else{console.log("Connect Wallet.")
-                window.location.assign('http://127.0.0.1:8000/connect_wallet');
-            }
-        }
-    )
-}
+// function is_connected() {
+//     web3_obj = get_web3_object();
+//     web3_obj.eth.requestAccounts()
+//     .then(
+//         function(accounts){
+//             if (accounts.length > 0) {
+//                 window.location.assign('http://127.0.0.1:8000/sign_out');
+//             }
+//             else{console.log("Connect Wallet.")
+//                 window.location.assign('http://127.0.0.1:8000/connect_wallet');
+//             }
+//         }
+//     )
+// }
 
 
 

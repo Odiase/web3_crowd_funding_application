@@ -69,6 +69,3 @@ def sign_out(request):
 def connect_wallet(request):
     return render(request, "connect_to_wallet.html")
 
-
-def create_crowd_fund(request):
-    return render(request, "create_crowd_funding.html")
