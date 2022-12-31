@@ -3,6 +3,7 @@ function get_web3_object() {
         // assinging web3 object to global window web3 3 variable
         window.web3 = new Web3(ethereum);
         web3_obj = window.web3;
+        return web3_obj;
     }else {
         window.alert("Note: You do not have MetaMask or any Web3 Extensions activated");
     }
@@ -27,6 +28,7 @@ async function check_and_connect() {
         if (error["message"] == "Already processing eth_requestAccounts. Please wait.") {
             window.alert("You seem to have denied access to a previous attempt to access your wallet, please clarify that.")
         }
+        console.log(error)
         console.error("User denied account access");
     }
 }

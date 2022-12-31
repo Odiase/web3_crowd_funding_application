@@ -18,16 +18,17 @@
         font-size: 1.1rem;
         cursor: pointer;
         margin-bottom: 15px;
+        transition: .3s;
 
         &:hover{
             opacity: .8;
+            transform: scale(1.05);
         }
     }
 
     #metamask_btn{
         background-color: orangered;
         color: white;
-        transition: .3s;
     }
     #coinbase{
         color: darkblue;
