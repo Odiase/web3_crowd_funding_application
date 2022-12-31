@@ -12,7 +12,7 @@ function get_web3_object() {
 
 
 
-async function check_and_connect() {
+async function get_wallet() {
     /** Checking if a metamask extension is available and trying to access it.....of course with the user's permission */
     web3_obj = get_web3_object();
     
@@ -21,16 +21,29 @@ async function check_and_connect() {
          var accounts = await web3_obj.eth.requestAccounts();
          // redirects the user to the home page.
          if (accounts) {
-            window.location.replace('http://127.0.0.1:8000');
+            window.location.replace('http://127.0.0.1:8000/sign_out');
          }
          console.log(accounts)
     } catch (error) {
         if (error["message"] == "Already processing eth_requestAccounts. Please wait.") {
             window.alert("You seem to have denied access to a previous attempt to access your wallet, please clarify that.")
         }
-        console.log(error)
-        console.error("User denied account access");
     }
+}
+
+function is_connected() {
+    web3_obj = get_web3_object();
+    web3_obj.eth.requestAccounts()
+    .then(
+        function(accounts){
+            if (accounts.length > 0) {
+                window.location.assign('http://127.0.0.1:8000/sign_out');
+            }
+            else{console.log("Connect Wallet.")
+                window.location.assign('http://127.0.0.1:8000/connect_wallet');
+            }
+        }
+    )
 }
 
 
@@ -60,5 +73,5 @@ async function check_and_connect() {
 
 
 
-// check_and_connect();
+// get_wallet();
 // has_web3_extension()
