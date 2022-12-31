@@ -31,6 +31,17 @@ async function get_wallet() {
     }
 }
 
+
+function create_crowd_fund() {
+    web3_obj = get_web3_object();
+    const ABI = require('./crowd_fund_factory_abi.json');
+    contractAddress = "0x69fffF4Ef84CEB8cCE746daeC3A47949504d0f1F";
+    const contract = web3_obj.eth.Contract(ABI, contractAddress);
+    console.log(contract)
+}
+
+
+
 // function is_connected() {
 //     web3_obj = get_web3_object();
 //     web3_obj.eth.requestAccounts()
