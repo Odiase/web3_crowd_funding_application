@@ -10,8 +10,10 @@
     <form action="">
         <label for="">Name</label>
         <input type="text" placeholder="crowd fund name" name="fund_name">
+        <br>
         <label for="">Owner's Name</label>
         <input type="text" value="{{request.user.username}}" name="owner_name">
+        <br>
         <label for="">Description</label>
         <textarea name="description" id="" cols="30" rows="10"></textarea>
     </form>
