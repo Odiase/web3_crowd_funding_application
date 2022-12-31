@@ -49,11 +49,17 @@ function create_crowd_fund() {
 
         // create crowd fund
         accountAddress = get_wallet_address()
-        contract.methods.createCrowdFundContract("UkrRusJs", "Desc", "Efosa").send({from: accountAddress})
+        contract.methods.createCrowdFundContract("#EndSars", "Desc", "Efosa").send({from: accountAddress})
         .then(functionResult => {
             // Use the function result
         2})
-        .catch(error => {console.log(error)});
+        .catch(error => {
+            if (error.message.includes("User denied transaction signature")) {
+                window.alert('You Rejected The Transaction')
+            }else{
+                window.alert("A Crowd Fund With That Name Already Exists.")
+            }
+        });
     });
 
 
@@ -67,48 +73,3 @@ function get_wallet_address(){
         window.location.replace("http://127.0.0.1:8000/connect_wallet");
     }
 }
-
-// function is_connected() {
-//     web3_obj = get_web3_object();
-//     web3_obj.eth.requestAccounts()
-//     .then(
-//         function(accounts){
-//             if (accounts.length > 0) {
-//                 window.location.assign('http://127.0.0.1:8000/sign_out');
-//             }
-//             else{console.log("Connect Wallet.")
-//                 window.location.assign('http://127.0.0.1:8000/connect_wallet');
-//             }
-//         }
-//     )
-// }
-
-
-
-
-
-// function has_web3_extension() {
-    /** this function checks if a wallet is connected to the application */
-    // web3.eth.net.isListening()
-    // .then(
-    //     function(isListening){
-    //         if (isListening) {
-    //             console.log("Yeah You Are Connected Alright.");
-    //             return true;
-    //         }
-    //         else{
-    //             console.log("Not connected to Ethereum node. Please check your connection and try again.");
-    //         }
-    //     }
-    // )
-    // .catch(
-    //     function(error){
-    //         console.log(error);
-    //     }
-    // )
-// }
-
-
-
-// get_wallet();
-// has_web3_extension()
