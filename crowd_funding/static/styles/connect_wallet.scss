@@ -1,0 +1,36 @@
+.auth_form_container{
+    flex-direction: column;
+    width: 100%;
+}
+
+.wallets_container{
+    width: 100%;
+    margin-top: 40px;
+
+    button{
+        display: block;
+        padding: 20px;
+        width: 80%;
+        max-width: 600px;
+        margin: auto;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-bottom: 15px;
+
+        &:hover{
+            opacity: .8;
+        }
+    }
+
+    #metamask_btn{
+        background-color: orangered;
+        color: white;
+        transition: .3s;
+    }
+    #coinbase{
+        color: darkblue;
+        background-color: white;
+    }
+}

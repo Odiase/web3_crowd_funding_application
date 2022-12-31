@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% block styles %}
+    <!-- custom styles -->
+    <link rel="stylesheet" href="{% static 'styles/dist/general.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/dist/auth.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/dist/connect_wallet.css'%}">
+    {% endblock styles %}
+
+    <!-- Font Awesome Script -->
+    <script src="https://kit.fontawesome.com/9c3d7ef638.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Scripts -->
+    {% block scripts %}
+    <!-- Including the web3 library in the HTML file -->
+     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+    <!-- Custom Js scripts -->
+    <script src="{% static 'scripts/web3_activities.js'%}" defer></script>
+    {% endblock scripts %}
+
+    {% block title %}
+    <title>FundMe : Connect To Wallet</title>
+    {% endblock title %}
+</head>
+<body>
+    {% block content %}
+    <!-- Sign Up Section Starts -->
+    <section class="auth_form_container">
+        <h1>Connect To Wallet To Continue</h1>
+
+        <div class="wallets_container">
+            <button id="metamask_btn" onclick="check_and_connect()">Continue With <strong>MetaMask</strong></button>
+            <button id="coinbase">Continue With <strong>CoinBase</strong></button>
+        </div>
+    </section>
+    {% endblock content %}
+</body>
+</html>
