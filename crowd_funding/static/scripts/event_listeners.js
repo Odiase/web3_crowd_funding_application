@@ -1,3 +1,10 @@
-import { get_web3_object, get_wallet } from './web3_activities.js';
+import { get_wallet } from './web3_activities.js';
 
-let crowd_fund_form = document.getElementById("crowd_fund_form");
+let connect_btn = document.querySelector(".connect_wallet_btn");
+
+
+// event listeners
+
+connect_btn.addEventListener("click", () => {
+    get_wallet();
+})

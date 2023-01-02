@@ -45,15 +45,6 @@ async function create_crowd_fund() {
 
 }
 
-function get_wallet_address(redirect_url){
-    /** Gets the user's wallet address and if its not available, it redirects them to the 'connect wallet' page */
-    if (localStorage.getItem('account')) {
-        return localStorage.getItem('account');
-    }
-    else{
-        window.location.replace("http://127.0.0.1:8000/connect_wallet");
-    }
-}
 
 function get_form_data() {
     let name = crowd_fund_form['fund_name'].value;
