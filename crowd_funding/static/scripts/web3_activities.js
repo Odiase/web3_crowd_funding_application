@@ -27,9 +27,10 @@ export async function get_wallet(redirect_url) {
             // redirection
             let current_url = window.location.href;
             let url_to_redirect = `${location.origin}/${redirect_url}`;
+
             if (current_url == url_to_redirect) {}
-            else if(redirect_url == "") {
-                window.location.replace(location.origin)
+            else if(redirect_url == undefined) {
+                window.location.replace(`${location.origin}/crowd_fund/create`);
             }
             else{  
                 window.location.replace(url_to_redirect);
