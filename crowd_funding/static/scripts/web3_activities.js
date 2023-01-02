@@ -28,6 +28,7 @@ export async function get_wallet(redirect_url) {
             let current_url = window.location.href;
             let url_to_redirect = `http://127.0.0.1:8000/${redirect_url}`;
             if (current_url == url_to_redirect) {}
+            else if(redirect_url == "") {window.history.back()}
             else{  
                 window.location.replace(url_to_redirect);
             }
@@ -38,10 +39,6 @@ export async function get_wallet(redirect_url) {
         }
     }
 }
-
-
-
-
 
 
 

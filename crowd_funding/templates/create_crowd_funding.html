@@ -38,13 +38,13 @@
     <br><br><br><br><br><br><br><br><br><br>
     <form action="" id="crowd_fund_form">
         <label for="">Name</label>
-        <input type="text" placeholder="crowd fund name" name="fund_name">
+        <input type="text" placeholder="crowd fund name" name="fund_name" required>
         <br>
         <label for="">Owner's Name</label>
-        <input type="text" value="{{request.user.username}}" name="owner_name">
+        <input type="text" value="{{request.user.username}}" name="owner_name" required>
         <br>
         <label for="">Description</label>
-        <textarea name="description" id="" cols="30" rows="10"></textarea>
+        <textarea name="description" id="" cols="30" rows="10" required></textarea>
         
         <button type="submit">Create Crowd Fund</button>
     </form>

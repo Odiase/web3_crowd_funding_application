@@ -5,7 +5,7 @@ let crowd_fund_form = document.getElementById("crowd_fund_form");
 
 
 
-function create_crowd_fund() {
+async function create_crowd_fund() {
     let web3_obj = get_web3_object();
     let contract;
 
@@ -25,17 +25,18 @@ function create_crowd_fund() {
         .then(functionResult => {
             // Use the function result
         2})
-        .catch(error => {
+        .catch(async error => {
             // this runs if the user has rejected the transaction
             if (error.message.includes("User denied transaction signature") || error.code == 4001) {
                 window.alert('You Rejected The Transaction')
             }
             // this runs if no wallet has been linked to the application
-            if (error.code == 4100) {
-                get_wallet('crowd_fund/create');
-                
+            else if (error.code == 4100) {
+                await get_wallet('crowd_fund/create');
+                create_crowd_fund();
             }
             else{
+                console.log(error)
                 window.alert("A Crowd Fund With That Name Already Exists.")
             }
         });
@@ -44,7 +45,8 @@ function create_crowd_fund() {
 
 }
 
-function get_wallet_address(){
+function get_wallet_address(redirect_url){
+    /** Gets the user's wallet address and if its not available, it redirects them to the 'connect wallet' page */
     if (localStorage.getItem('account')) {
         return localStorage.getItem('account');
     }
@@ -61,7 +63,6 @@ function get_form_data() {
     return [name, owner_name, description];
 }
 
-console.log(get_form_data())
 
 
 // event listener
