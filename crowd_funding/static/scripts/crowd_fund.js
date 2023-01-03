@@ -23,7 +23,10 @@ async function create_crowd_fund() {
 
         contract.methods.createCrowdFundContract(create_fund_form[0], create_fund_form[2], create_fund_form[1]).send({from: accountAddress})
         .then(functionResult => {
-            // Use the function result
+            console.log("DO")
+            console.log(functionResult)
+            // submitting the form to the backend to save necessary data
+            crowd_fund_form.submit();
         2})
         .catch(async error => {
             // this runs if the user has rejected the transaction
@@ -36,13 +39,10 @@ async function create_crowd_fund() {
                 create_crowd_fund();
             }
             else{
-                console.log(error)
                 window.alert("A Crowd Fund With That Name Already Exists.")
             }
         });
     });
-
-
 }
 
 
