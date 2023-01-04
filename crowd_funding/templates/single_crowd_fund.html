@@ -20,6 +20,9 @@
 
     {% block scripts %}
     <!-- Custom Scripts -->
+    <!-- Including the web3 library in the HTML file -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    
     <script src="{% static 'scripts/single_crowd_funding.js'%}" defer></script>
     <script src="{% static 'scripts/web3_single_crowd_fund.js'%}" defer type="module"></script>
     {% endblock scripts %}

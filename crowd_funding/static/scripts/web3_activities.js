@@ -5,7 +5,7 @@ export function get_web3_object() {
         let web3_obj = window.web3;
         return web3_obj;
     }else {
-        window.alert("Note: You do not have MetaMask or any Web3 Extensions activated");
+        window.alert("Note: You do not have MetaMask or any Web3 Extensions activated, this will make this application not to behave as expected.");
     }
 }
 
