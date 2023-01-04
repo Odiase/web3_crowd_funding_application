@@ -62,17 +62,17 @@ export async function get_smart_contract(){
     let domain = location.origin;
     let contract;
 
-    // Retrieve the ABI from the crowd_fund_factory_abi.json file
-    fetch(`${domain}/static/scripts/crowd_fund_factory_abi.json`)
-    .then(response => response.json())
-    .then(ABI => {
+    try {
+        // Retrieve the ABI from the crowd_fund_factory_abi.json file
+        const response = await fetch(`${domain}/static/scripts/crowd_fund_factory_abi.json`);
+        const ABI = await response.json();
+    
         let contractAddress = "0xea1d2f4035302812495CA6dcf39C309E21422618"
         // Use the ABI to define the interface of the smart contract
-        contract = new web3_obj.eth.Contract(ABI.abi, contractAddress);
-
+        contract = await new web3_obj.eth.Contract(ABI.abi, contractAddress);
         return contract;
-    })
-    .catch(error => {
+      } 
+    catch (error) {
         window.alert("An Error Occured.");
-    });
+    }
 }

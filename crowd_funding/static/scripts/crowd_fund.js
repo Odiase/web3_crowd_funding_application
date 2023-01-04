@@ -1,4 +1,4 @@
-import { get_web3_object, get_wallet, get_wallet_address } from './web3_activities.js';
+import { get_web3_object, get_wallet, get_wallet_address, get_smart_contract } from './web3_activities.js';
 let crowd_fund_form = document.getElementById("crowd_fund_form");
 
 
@@ -15,16 +15,15 @@ function get_form_data() {
 
 
 
-export async function create_crowd_fund()  {
+async function create_crowd_fund()  {
     // getting smart contract
-    contract = get_smart_contract();
+    let contract = await get_smart_contract();
     // create crowd fund
     let accountAddress = get_wallet_address();
     let create_fund_form = get_form_data();
 
     contract.methods.createCrowdFundContract(create_fund_form[0], create_fund_form[2], create_fund_form[1]).send({from: accountAddress})
         .then(functionResult => {
-            console.log("DO")
             console.log(functionResult)
             // submitting the form to the backend to save necessary data
             crowd_fund_form.submit();
