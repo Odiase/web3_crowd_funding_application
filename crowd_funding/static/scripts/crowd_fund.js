@@ -1,27 +1,28 @@
 import { get_web3_object, get_wallet, get_wallet_address } from './web3_activities.js';
-
 let crowd_fund_form = document.getElementById("crowd_fund_form");
 
 
+// Functions
+
+function get_form_data() {
+    let name = crowd_fund_form['fund_name'].value;
+    let owner_name = crowd_fund_form['owner_name'].value;
+    let description = crowd_fund_form['description'].value;
+
+    return [name, owner_name, description];
+}
 
 
-async function create_crowd_fund() {
-    let web3_obj = get_web3_object();
-    let contract;
 
-    // Retrieve the ABI from the crowd_fund_factory_abi.json file
-    fetch('http://127.0.0.1:8000/static/scripts/crowd_fund_factory_abi.json')
-    .then(response => response.json())
-    .then(ABI => {
-        let contractAddress = "0xea1d2f4035302812495CA6dcf39C309E21422618"
-        // Use the ABI to define the interface of the smart contract
-        contract = new web3_obj.eth.Contract(ABI.abi, contractAddress);
 
-        // create crowd fund
-        let accountAddress = get_wallet_address();
-        let create_fund_form = get_form_data();
+export async function create_crowd_fund()  {
+    // getting smart contract
+    contract = get_smart_contract();
+    // create crowd fund
+    let accountAddress = get_wallet_address();
+    let create_fund_form = get_form_data();
 
-        contract.methods.createCrowdFundContract(create_fund_form[0], create_fund_form[2], create_fund_form[1]).send({from: accountAddress})
+    contract.methods.createCrowdFundContract(create_fund_form[0], create_fund_form[2], create_fund_form[1]).send({from: accountAddress})
         .then(functionResult => {
             console.log("DO")
             console.log(functionResult)
@@ -42,19 +43,7 @@ async function create_crowd_fund() {
                 window.alert("A Crowd Fund With That Name Already Exists.")
             }
         });
-    });
 }
-
-
-function get_form_data() {
-    let name = crowd_fund_form['fund_name'].value;
-    let owner_name = crowd_fund_form['owner_name'].value;
-    let description = crowd_fund_form['description'].value;
-
-    return [name, owner_name, description];
-}
-
-
 
 // event listener
 crowd_fund_form.addEventListener("submit", (e) => {
