@@ -1,6 +1,5 @@
 # third party packages imports
 from django.shortcuts import render
-from web3 import Web3
 
 #local imports
 from .models import CrowdFund

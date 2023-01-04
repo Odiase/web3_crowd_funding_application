@@ -134,6 +134,10 @@ STATICFILES_DIRS = [
     Path(BASE_DIR, 'static'),
 ]
 
+# Media Uploads Config
+MEDIA_ROOT = BASE_DIR/'media/uploads/crowd_fund_images'
+MEDIA_URL = '/media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
