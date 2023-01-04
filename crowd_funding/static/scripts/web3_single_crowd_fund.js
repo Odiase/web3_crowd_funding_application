@@ -1,5 +1,5 @@
 import { get_web3_object, get_wallet, get_wallet_address, get_smart_contract } from './web3_activities.js';
-
+let crowd_fund_name = document.getElementById("crowd_fund_name").textContent;
 
 async function get_single_crowd_fund(name) {
     // getting web3 instance
@@ -23,3 +23,8 @@ async function get_single_crowd_fund(name) {
         }
     }
 }
+
+
+
+//event listener
+window.addEventListener("load", get_single_crowd_fund(crowd_fund_name));

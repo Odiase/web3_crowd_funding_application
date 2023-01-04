@@ -21,6 +21,7 @@
     {% block scripts %}
     <!-- Custom Scripts -->
     <script src="{% static 'scripts/single_crowd_funding.js'%}" defer></script>
+    <script src="{% static 'scripts/web3_single_crowd_fund.js'%}" defer type="module"></script>
     {% endblock scripts %}
 
     {% block title %}
@@ -29,6 +30,7 @@
 </head> 
 <body>
     {% block content %}
+    <p style="display: none;" id="crowd_fund_name">{{name}}</p>
 
     <!-- mobile view for other crowd fundings -->
     <section class="other_crowd_fundings">
