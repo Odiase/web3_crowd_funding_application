@@ -1,3 +1,5 @@
+{% extends 'index.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+    {% block styles %}
     <!-- custom styles -->
-    <link rel="stylesheet" href="styles/dist/general.css">
-    <link rel="stylesheet" href="styles/dist/single_crowd_funding.css">
+    <link rel="stylesheet" href="{% static 'styles/dist/single_crowd_funding.css'%}">
+    {% endblock styles %}
 
     <!-- Font Awesome Script -->
     <script src="https://kit.fontawesome.com/9c3d7ef638.js" crossorigin="anonymous"></script>
@@ -16,31 +18,17 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
 
+    {% block scripts %}
     <!-- Custom Scripts -->
-    <script src="scripts/single_crowd_funding.js" defer></script>
+    <script src="{% static 'scripts/single_crowd_funding.js'%}" defer></script>
+    {% endblock scripts %}
 
+    {% block title %}
     <title>FundMe - UkrRus</title>
+    {% endblock title %}
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <h1><a href="index.html">Fund<span>Me</span></a></h1>
-        <nav>
-            <ul>
-                <li>
-                    <span><i class="fa fa-door-open"></i></span>
-                    &nbsp;
-                    <a href="">Sign In</a>
-                </li>
-                <li>
-                    <span><i class="fa fa-piggy-bank"></i></span>
-                    &nbsp;
-                    <a href="">Create A FundRaiser</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <!-- Header Section Ends -->
+    {% block content %}
 
     <!-- mobile view for other crowd fundings -->
     <section class="other_crowd_fundings">
@@ -115,5 +103,6 @@
             <button type="reset" class="cancel-btn">No, I am Not</button>
         </form>
     </div>
+    {% endblock content %}
 </body>
 </html>

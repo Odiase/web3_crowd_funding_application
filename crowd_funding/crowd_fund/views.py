@@ -18,4 +18,7 @@ def create_crowd_fund(request):
 
 
 def single_crowd_fund(request, name):
-    pass
+    context = {
+        "name" : name
+    }
+    return render(request, "single_crowd_fund.html", context)
