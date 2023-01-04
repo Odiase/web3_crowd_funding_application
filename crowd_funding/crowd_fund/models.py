@@ -7,7 +7,7 @@ class CrowdFund(models.Model):
     '''Crowd Funding Table Schema'''
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="crowd_funds")
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=True, null=True)
 
