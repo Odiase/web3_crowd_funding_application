@@ -1,4 +1,4 @@
-/** imports */
+/** Function imports */
 import { get_web3_object, get_wallet, get_wallet_address, get_smart_contract } from './web3_activities.js';
 
 /** DOM elements */
@@ -36,7 +36,8 @@ async function get_single_crowd_fund(name) {
 
 
 function assign_field_values(data) {
-    amount_raised_element.textContent = data[2];
+    let amount_raised = data[2] / 10**18;
+    amount_raised_element.textContent = `${amount_raised} eth`;
     num_of_funders_element.textContent = data[3];
 }
 
