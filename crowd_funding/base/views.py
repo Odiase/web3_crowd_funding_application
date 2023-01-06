@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 
 # local imports
 # from .forms import UserForm
@@ -66,6 +66,7 @@ def sign_out(request):
     return redirect("home")
 
 
+@login_required(login_url="sign_in")
 def connect_wallet(request):
     return render(request, "connect_to_wallet.html")
 

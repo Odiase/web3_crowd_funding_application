@@ -7,6 +7,7 @@ let single_crowd_fund_container = document.querySelector(".single_crowd_section"
 
 let amount_raised_element = document.getElementById("amount_raised");
 let num_of_funders_element = document.getElementById("num_of_funders");
+let description_text = document.getElementById("description_text");
 
 
 /** Functions */
@@ -21,7 +22,6 @@ async function get_single_crowd_fund(name) {
 
     try{
         crowd_fund_info = await contract.methods.getSingleCrowdFund(name).call();
-
         return crowd_fund_info;
     }
     catch(error) {
@@ -39,6 +39,7 @@ function assign_field_values(data) {
     let amount_raised = data[2] / 10**18;
     amount_raised_element.textContent = `${amount_raised} eth`;
     num_of_funders_element.textContent = data[3];
+    description_text.textContent = data[4];
 }
 
 

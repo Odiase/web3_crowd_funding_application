@@ -67,7 +67,7 @@ export async function get_smart_contract(){
         const response = await fetch(`${domain}/static/scripts/crowd_fund_factory_abi.json`);
         const ABI = await response.json();
     
-        let contractAddress = "0xea1d2f4035302812495CA6dcf39C309E21422618"
+        let contractAddress = "0x17E55DbdB866A8377A62616eF1558B8E79154f3B"
         // Use the ABI to define the interface of the smart contract
         contract = await new web3_obj.eth.Contract(ABI.abi, contractAddress);
         return contract;
@@ -76,3 +76,4 @@ export async function get_smart_contract(){
         window.alert("An Error Occured.");
     }
 }
+//This is a Crowd Fund To SUpport the refugges and the victims From the Ukraine/Russia War that is ongoing an also provide immigration support for those who  needs it and also food, shelter, clothing

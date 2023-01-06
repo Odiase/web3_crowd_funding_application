@@ -1,11 +1,13 @@
 # third party packages imports
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 #local imports
 from .models import CrowdFund
 
 # Create your views here.
 
+@login_required(login_url="sign_in")
 def create_crowd_fund(request):
     if request.method == "POST":
         owner = request.user
@@ -17,6 +19,7 @@ def create_crowd_fund(request):
     return render(request, "create_crowd_funding.html")
 
 
+@login_required(login_url="sign_in")
 def single_crowd_fund(request, name):
     context = {
         "name" : name
