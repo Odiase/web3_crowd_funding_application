@@ -22,14 +22,26 @@ def create_crowd_fund(request):
 @login_required(login_url="sign_in")
 def single_crowd_fund(request, name):
     # crowd_fund_image = get_object_or_404(CrowdFund, name=name)
-    crowd_fund_image = CrowdFund.objects.get(name=name).image
+    crowd_fund = CrowdFund.objects.get(name=name)
+    crowd_fund_image = crowd_fund.image
+    crowd_fund_owner= crowd_fund.owner.username
+    date_created = crowd_fund.created
     image = ""
+    owner = ""
+    created = ""
 
     if crowd_fund_image:
         image = crowd_fund_image
+    if crowd_fund_owner:
+        owner = crowd_fund_owner
+    if date_created:
+        created = date_created
+
 
     context = {
         "name" : name, 
-        "image" : image
+        "image" : image,
+        "owner" : owner,
+        "date" : created
     }
     return render(request, "single_crowd_fund.html", context)

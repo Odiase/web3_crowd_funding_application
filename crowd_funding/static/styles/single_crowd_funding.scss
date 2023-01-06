@@ -99,17 +99,18 @@ $light_green : rgb(10, 169, 10);
         }
     }
 
-    .delete_btn{
-        padding: 8px;
-        border: none;
+    .send_eth_btn{
+        padding: 10px;
+        border: 1px solid red;
         color: white;
         background-color: red;
         font-weight: bold;
         cursor: pointer;
         transition: .3s;
+        font-size: 1.1rem;
 
         &:hover{
-            background-color: rgb(255, 35, 35);
+            background-color: darkred;
         }
     }
 }
@@ -146,4 +147,15 @@ $light_green : rgb(10, 169, 10);
         background-color: red;
         margin-right: 5px;
     }
+}
+
+
+#sender_name{
+    width: 400px;
+    border: none;
+    padding: 10px;
+    background-color: rgb(20,20,20);
+    border: 1px solid white;
+    color: white;
+    font-size: 1.1rem;
 }
