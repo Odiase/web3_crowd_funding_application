@@ -78,6 +78,7 @@ $light_green : rgb(10, 169, 10);
     }
 
     .more_info{
+        width: 100%;
         margin-top: 60px;
 
         div{
@@ -92,7 +93,9 @@ $light_green : rgb(10, 169, 10);
         }
 
         .description{
-            margin-top: 30px;
+            margin-top: 50px;
+            max-width: 90%;
+            overflow-wrap: break-word;
         }
     }
 
