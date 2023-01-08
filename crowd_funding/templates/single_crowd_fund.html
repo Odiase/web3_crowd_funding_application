@@ -68,7 +68,7 @@
     <section class="single_crowd_section">
         <div class="crowd_fund_header">
             <div class="">
-                <p>Name</p>
+                <p>Crowd Fund Name</p>
                 <h2>{{name}}</h2>
             </div>
             <div class="">
@@ -84,7 +84,7 @@
         <section class="more_info">
             <div class="">
                 <p>Date Created</p>
-                <h3>12/21/2020</h3>
+                <h3>{{date.day}}/{{date.month}}/{{date.year}}</h3>
             </div>
 
             <div class="">
@@ -97,8 +97,11 @@
                 <br>
                 <pre id="description_text" style="white-space: pre-wrap;"></pre>
             </div>
+            <button id="share_btn">Share Link <i class="fa fa-link"></i></button>
         </section>
-        <br><br><br><br>
+        <br><br>
+        <h3>Contribute To This Crowd Fund</h3>
+        <br>
         <input type="text" id="sender_name" placeholder="Let The Owner Know Who You Are">
         <button class="send_eth_btn">Send Ether To This Crowd Fund</button>
         <br> <br>

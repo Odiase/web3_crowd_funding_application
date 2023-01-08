@@ -55,7 +55,7 @@ $light_green : rgb(10, 169, 10);
 
 // single_crowd_section styling
 .single_crowd_section{
-    width: 80%;
+    width: 90%;
     margin: auto;
     margin-top: 70px;
 
@@ -151,11 +151,25 @@ $light_green : rgb(10, 169, 10);
 
 
 #sender_name{
-    width: 400px;
+    width: 70%;
     border: none;
     padding: 10px;
     background-color: rgb(20,20,20);
     border: 1px solid white;
     color: white;
     font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+#share_btn{
+    padding: 5px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+@media (max-width:800px){
+    #sender_name{
+        width: 90%;
+    }
 }

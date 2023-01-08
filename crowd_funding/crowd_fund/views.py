@@ -21,11 +21,11 @@ def create_crowd_fund(request):
 
 @login_required(login_url="sign_in")
 def single_crowd_fund(request, name):
-    # crowd_fund_image = get_object_or_404(CrowdFund, name=name)
     crowd_fund = CrowdFund.objects.get(name=name)
     crowd_fund_image = crowd_fund.image
     crowd_fund_owner= crowd_fund.owner.username
     date_created = crowd_fund.created
+    
     image = ""
     owner = ""
     created = ""
