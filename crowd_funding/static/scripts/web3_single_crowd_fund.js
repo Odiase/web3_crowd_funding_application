@@ -66,9 +66,10 @@ async function crowd_fund_exists(name) {
 
 
 // function : fund_a_crowd_fund - this function handles sending funds or value from a user's account/wallet to the crowd_fund address
-// @params : funder_name - this is the name of the individual sending funds to the crowd_fund
-// @params : crowd_fund_name - this is the name of the crowd fund
-async function fund_a_crowd_fund(funder_name, crowd_fund_name){
+// @params : funder_name - this holds the name of the individual sending funds to the crowd_fund
+// @params : crowd_fund_name - this holds the name of the crowd fund
+//@params : amount - This holds the amount of value that is to be sent to the crowd_fund (e.g 1 ETH, 0.5 ETH) 
+async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
     // get web3 object
     let web3_obj = get_web3_object();
 
@@ -76,7 +77,7 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name){
     let contract = get_smart_contract();
 
     // create transaction
-    
+
 }
 
 

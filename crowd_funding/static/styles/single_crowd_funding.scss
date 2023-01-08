@@ -151,7 +151,7 @@ $light_green : rgb(10, 169, 10);
 
 
 #sender_name{
-    width: 70%;
+    width: 90%;
     border: none;
     padding: 10px;
     background-color: rgb(20,20,20);
@@ -175,9 +175,32 @@ $light_green : rgb(10, 169, 10);
         color: black;
     }
 }
+label{
+    display: block;
+    margin-bottom: 10px;
+}
 
-@media (max-width:800px){
+#amount_input_field{
+    margin: 25px 0 30px 0;
+
+    input{
+        padding: 3px 10px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        min-width: 100px;
+        color: white;
+        font-size: 1.06rem;
+    }
+}
+
+#value_type{
+    display: inline-block;
+    margin-left: 5px;
+}
+
+@media (min-width:801px){
     #sender_name{
-        width: 90%;
+        width: 70%;
     }
 }
