@@ -11,6 +11,9 @@ let description_text = document.getElementById("description_text");
 
 
 /** Functions */
+
+// @params: name - this is the name of the crowd_fund
+// @notice - the web3_obj gets the web3_object from the web3_activities js, so as to interact with the browser as a web3 browser
 async function get_single_crowd_fund(name) {
     let crowd_fund_info;
 
@@ -30,6 +33,8 @@ async function get_single_crowd_fund(name) {
             get_wallet();
             get_single_crowd_fund(name);
         }
+        // in the case of any other error
+        //(which is most likely because there isn't a crowd fund that exists with the name tht was passed in as a parameter)
         else {window.alert("There Is No CrowdFund With That Name")};
     }
 }
@@ -59,6 +64,20 @@ async function crowd_fund_exists(name) {
     }
 }
 
+
+// function : fund_a_crowd_fund - this function handles sending funds or value from a user's account/wallet to the crowd_fund address
+// @params : funder_name - this is the name of the individual sending funds to the crowd_fund
+// @params : crowd_fund_name - this is the name of the crowd fund
+async function fund_a_crowd_fund(funder_name, crowd_fund_name){
+    // get web3 object
+    let web3_obj = get_web3_object();
+
+    // get smart contract
+    let contract = get_smart_contract();
+
+    // create transaction
+    
+}
 
 
 //event listener

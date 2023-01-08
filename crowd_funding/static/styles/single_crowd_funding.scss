@@ -167,6 +167,13 @@ $light_green : rgb(10, 169, 10);
     color: white;
     border: 1px solid white;
     cursor: pointer;
+    transition: .3s;
+    font-weight: bold;
+
+    &:hover{
+        background-color: white;
+        color: black;
+    }
 }
 
 @media (max-width:800px){

@@ -34,3 +34,5 @@ cancel_delete_btn.addEventListener("click", () => {
 delete_btn.addEventListener("click", () => {
     delete_form.style.top = "0";
 })
+
+// @params: text - the text that will be copied to the clipboard
