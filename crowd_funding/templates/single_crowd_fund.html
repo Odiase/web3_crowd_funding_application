@@ -102,12 +102,12 @@
         <br><br><br><br>
         <h3>Contribute To This Crowd Fund</h3>
         <br>
-        <form action="">
+        <form action="" id="send_fund_form">
             <label for="">Your Name(* Not Required)</label>
-            <input type="text" id="sender_name" placeholder="Let The Owner Know Who You Are">
+            <input type="text" id="sender_name" placeholder="Let The Owner Know Who You Are" name="sender_name">
             <div id="amount_input_field">
                 <label for="">Amount To Be Sent</label>
-                <input type="number" min="0" step="1" required>
+                <input type="number" min="0" step="any" required name="amount">
                 <h3 id="value_type">ETH</h3>
             </div>
             <button class="send_eth_btn">Send Fund</button>
