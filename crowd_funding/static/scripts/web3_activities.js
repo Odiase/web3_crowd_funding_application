@@ -67,7 +67,7 @@ export async function get_smart_contract(){
         const response = await fetch(`${domain}/static/scripts/crowd_fund_factory_abi.json`);
         const ABI = await response.json();
     
-        let contractAddress = "0x17E55DbdB866A8377A62616eF1558B8E79154f3B"
+        let contractAddress = "0x01aDb57425086749BF87a1E33a760ee4003d13Ca"
         // Use the ABI to define the interface of the smart contract
         contract = await new web3_obj.eth.Contract(ABI.abi, contractAddress);
         return contract;

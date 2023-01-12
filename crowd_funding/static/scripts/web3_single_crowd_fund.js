@@ -80,6 +80,7 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
     // create transaction
     try{
         const sender_account_address = get_wallet_address()
+        console.log(`Crowd Fund : ${crowd_fund_name}`)
         const transaction = await contract.methods.fund(funder_name, crowd_fund_name).send({
             "from" : sender_account_address,
             "value" : web3_obj.utils.toWei(`${amount}`, 'ether'),
@@ -90,6 +91,9 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
     catch(error) {
         if (error.code == 4001) {
             window.alert("You Rejected This Transaction.")
+        }
+        else if (error.code == 4100) {
+           get_wallet(`crowd_fund/${crowd_fund_name}`);
         }
         console.log(error)
     }
