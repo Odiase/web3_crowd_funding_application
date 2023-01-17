@@ -1,3 +1,6 @@
+// global variables
+export let contract_address = "0x258F1FBFdAC4F290f792426C17dBEf4A0B8c90B5";
+
 export function get_web3_object() {
     if(window.ethereum) {
         // assinging web3 object to global window web3 3 variable
@@ -67,7 +70,7 @@ export async function get_smart_contract(){
         const response = await fetch(`${domain}/static/scripts/crowd_fund_factory_abi.json`);
         const ABI = await response.json();
     
-        let contractAddress = "0x01aDb57425086749BF87a1E33a760ee4003d13Ca"
+        let contractAddress = contract_address
         // Use the ABI to define the interface of the smart contract
         contract = await new web3_obj.eth.Contract(ABI.abi, contractAddress);
         return contract;

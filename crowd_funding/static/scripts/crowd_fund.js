@@ -25,9 +25,9 @@ async function create_crowd_fund()  {
     contract.methods.createCrowdFundContract(create_fund_form[0], create_fund_form[2], create_fund_form[1]).send({from: accountAddress})
         .then(functionResult => {
             console.log(functionResult)
-            // submitting the form to the backend to save necessary data
+            // submitting the form to the backend to save necessary data (image and time created)
             crowd_fund_form.submit();
-        2})
+        })
         .catch(async error => {
             // this runs if the user has rejected the transaction
             if (error.message.includes("User denied transaction signature") || error.code == 4001) {

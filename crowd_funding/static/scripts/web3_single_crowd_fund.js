@@ -1,5 +1,6 @@
 /** Function imports */
-import { get_web3_object, get_wallet, get_wallet_address, get_smart_contract } from './web3_activities.js';
+import { get_web3_object, get_wallet, get_wallet_address, get_smart_contract, contract_address } from './web3_activities.js';
+
 
 /** DOM elements */
 let crowd_fund_name = document.getElementById("crowd_fund_name").textContent;
@@ -77,15 +78,36 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
     // get smart contract
     let contract = await get_smart_contract();
 
+    // estimated Gas Fee
+    let gas_estimate;
+    const encodedData = contract.methods.fund(funder_name, crowd_fund_name).encodeABI();
+
+    web3.eth.estimateGas({to: contract_address, data: encodedData}, (error, estimate) => {
+        if(!error) {
+            gas_estimate = estimate;
+            console.log(gas_estimate)
+        } else {
+            console.log(error);
+        }
+    });
+
     // create transaction
     try{
         const sender_account_address = get_wallet_address()
-        console.log(`Crowd Fund : ${crowd_fund_name}`)
         const transaction = await contract.methods.fund(funder_name, crowd_fund_name).send({
             "from" : sender_account_address,
             "value" : web3_obj.utils.toWei(`${amount}`, 'ether'),
-            "gas" : "100000"
-        })
+            "gas" : gas_estimate,
+            "gasPrice": web3.utils.toWei("10", "gwei")
+        },
+        (error, transactionHash) => {
+            if(error) {
+              console.log(error);
+            } else {
+              console.log(transactionHash);
+            }
+          }
+        )
         window.alert("Funds Sent!")
     }
     catch(error) {
