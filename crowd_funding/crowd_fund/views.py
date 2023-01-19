@@ -21,9 +21,7 @@ def create_crowd_fund(request):
 
 @login_required(login_url="sign_in")
 def single_crowd_fund(request, name):
-    print("Getting it")
     crowd_fund = CrowdFund.objects.filter(name=name).order_by("-created")[0]
-    print("Crowd FUnd : ", crowd_fund)
     crowd_fund_image = crowd_fund.image
     crowd_fund_owner= crowd_fund.owner.username
     date_created = crowd_fund.created

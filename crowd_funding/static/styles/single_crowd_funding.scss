@@ -199,6 +199,20 @@ label{
     margin-left: 5px;
 }
 
+.withdraw_funds{
+    padding: 10px;
+    color: white;
+    border: none;
+    font-weight: bold;
+    background-color: green;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover{
+        background-color: rgb(4, 54, 4);
+    }
+}
+
 @media (min-width:801px){
     #sender_name{
         width: 70%;

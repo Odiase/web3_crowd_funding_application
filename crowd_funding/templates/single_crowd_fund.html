@@ -113,6 +113,10 @@
             <button class="send_eth_btn">Send Fund</button>
         </form>
         <br> <br>
+        {% if user.username == owner %}
+        <button class="withdraw_funds" id="withdraw_fund_btn">Withdraw All Funds</button>
+        {% endif %}
+        <br> <br>
     </section>
 
     <div class="delete_form">

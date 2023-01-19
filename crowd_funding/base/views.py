@@ -28,7 +28,7 @@ def sign_in(request):
             login(request, user)
             return redirect("home")
         else:
-            messages.info("Invalid credentials!")
+            messages.info(request, "Invalid credentials!")
             return redirect("sign_in")
     return render(request, "login.html")
 

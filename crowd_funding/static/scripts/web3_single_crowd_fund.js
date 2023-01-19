@@ -11,6 +11,8 @@ let num_of_funders_element = document.getElementById("num_of_funders");
 let description_text = document.getElementById("description_text");
 let send_fund_form = document.getElementById("send_fund_form");
 
+let withdraw_btn = document.getElementById("withdraw_fund_btn");
+
 
 /** Functions */
 
@@ -82,20 +84,28 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
     let gas_estimate;
     const encodedData = contract.methods.fund(funder_name, crowd_fund_name).encodeABI();
 
-    web3.eth.estimateGas({to: contract_address, data: encodedData}, (error, estimate) => {
-        if(!error) {
-            gas_estimate = estimate;
-            console.log(gas_estimate)
-        } else {
-            console.log(error);
-        }
-    });
+    // web3_obj.eth.estimateGas({to: contract_address, data: encodedData}, (error, estimate) => {
+    //     if(!error) {
+    //         console.log(estimate);
+    //         gas_estimate = estimate + 100;
+    //         console.log(gas_estimate)
+    //     } else {
+    //         console.log(error);
+    //     }
+    // });
+
+    web3.eth.estimateGas({
+        to: contract,
+        data: encodedData
+    })
+    .then(console.log);
 
     // create transaction
+    // console.log(web3_obj.eth.gasPrice);
     try{
-        const sender_account_address = get_wallet_address()
+        const sender_address = get_wallet_address()
         const transaction = await contract.methods.fund(funder_name, crowd_fund_name).send({
-            "from" : sender_account_address,
+            "from" : sender_address,
             "value" : web3_obj.utils.toWei(`${amount}`, 'ether'),
             "gas" : gas_estimate,
             "gasPrice": web3.utils.toWei("10", "gwei")
@@ -122,8 +132,29 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
 
 }
 
-function get_fund_data() {
+async function withdraw_funds() {
+    // user's address
+    let user_address = get_wallet_address();
 
+    // get smart contract
+    let contract = await get_smart_contract();
+
+    // making the transaction
+    try{
+        const tx = await contract.methods.withdrawBalance(crowd_fund_name).send({from : user_address});
+        window.alert("Funds Successfully Transferred To Wallet");
+    }
+    catch(error){
+        if (error.message.includes("User denied transaction signature") || error.code == 4001) {
+            window.alert('You Rejected The Transaction');
+        }
+        else if (error.code == 4100) {
+            console.log(error)
+        }
+        else{
+            console.log(error);
+        }
+    }
 }
 
 //event listener
@@ -131,4 +162,6 @@ window.addEventListener("load", crowd_fund_exists(crowd_fund_name));
 send_fund_form.addEventListener("submit", (e) => {
     e.preventDefault();
     fund_a_crowd_fund(send_fund_form['sender_name'].value, crowd_fund_name, send_fund_form['amount'].value);
-})
+});
+
+withdraw_btn.addEventListener("click", () => withdraw_funds());
