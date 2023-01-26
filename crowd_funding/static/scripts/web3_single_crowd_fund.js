@@ -80,25 +80,16 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
     // get smart contract
     let contract = await get_smart_contract();
 
-    // estimated Gas Fee
+    // Getting Estimated Gas Fee
     let gas_estimate;
     const encodedData = contract.methods.fund(funder_name, crowd_fund_name).encodeABI();
 
-    // web3_obj.eth.estimateGas({to: contract_address, data: encodedData}, (error, estimate) => {
-    //     if(!error) {
-    //         console.log(estimate);
-    //         gas_estimate = estimate + 100;
-    //         console.log(gas_estimate)
-    //     } else {
-    //         console.log(error);
-    //     }
-    // });
-
-    web3.eth.estimateGas({
-        to: contract,
-        data: encodedData
-    })
-    .then(console.log);
+    web3_obj.eth.estimateGas({to: contract_address, data: encodedData}, (error, estimate) => {
+        if(!error) {
+            gas_estimate = estimate;
+        } else {
+        }
+    });
 
     // create transaction
     // console.log(web3_obj.eth.gasPrice);
@@ -107,8 +98,8 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
         const transaction = await contract.methods.fund(funder_name, crowd_fund_name).send({
             "from" : sender_address,
             "value" : web3_obj.utils.toWei(`${amount}`, 'ether'),
-            "gas" : gas_estimate,
-            "gasPrice": web3.utils.toWei("10", "gwei")
+            "gas" : gas_estimate + 100,
+            "gasPrice": gas_estimate
         },
         (error, transactionHash) => {
             if(error) {
