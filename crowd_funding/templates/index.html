@@ -20,6 +20,7 @@
 
 
     <!-- Scripts -->
+    <script src="{% static 'scripts/general.js'%}" defer type="module"></script>
     {% block scripts %}
     <!-- Including the web3 library in the HTML file -->
      <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
@@ -27,7 +28,6 @@
     <!-- Custom Js scripts -->
     <script src="{% static 'scripts/web3_activities.js'%}" defer></script>
     {% endblock scripts %}
-    <script src="{% static 'scripts/general.js'%}" defer type="module"></script>
 
     {% block title %}
     <title>FundMe - Starting A CrowdFunding Has Never Been So Easy</title>
@@ -124,7 +124,12 @@
     <!-- Transaction Loader Container -->
     <div class="transaction_loader">
         <div class="inner_container">
-            <h1>Your Transaction is in Progress</h1>
+            <!-- icon that cancels the loader container -->
+            <div class="hide_loader">
+                <p>Cancel</p>
+            </div>
+
+            <h1 class="transaction_text">Your Transaction is in Progress</h1>
             <div class="loader"></div>
 
             <!-- icon that shows when a transaction is successful -->

@@ -103,6 +103,8 @@ header{
     justify-content: center;
     align-items: center;
     z-index: 9999999999;
+    transition: .4s;
+    opacity: 0;
     overflow: hidden;
 
     h1{
@@ -110,10 +112,11 @@ header{
     }
 }
 .inner_container{
-    padding: 5em;
+    padding: 4em;
     background-color: white;
     color: black;
     border-radius: 25px;
+    position: relative;
 }
 .loader {
     border: 16px solid rgb(20,20,20); /* Light grey */
@@ -125,14 +128,24 @@ header{
     margin: auto;
   }
   
+
 .completed_icon{
     font-size: 7rem;
     color: $standard_green;
+    display: none;
 }
 
 .failed_icon{
+    display: none;
     font-size: 7rem;
     color: red;
+}
+
+.hide_loader{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
 }
 
 // animations

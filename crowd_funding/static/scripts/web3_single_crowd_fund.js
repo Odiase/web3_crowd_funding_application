@@ -1,5 +1,6 @@
-/** Function imports */
+/**imports */
 import { get_web3_object, get_wallet, get_wallet_address, get_smart_contract, contract_address } from './web3_activities.js';
+import { start_loader, transaction_update } from './general.js';
 
 
 /** DOM elements */
@@ -29,6 +30,7 @@ async function get_single_crowd_fund(name) {
 
     try{
         crowd_fund_info = await contract.methods.getSingleCrowdFund(name).call();
+
         return crowd_fund_info;
     }
     catch(error) {
@@ -39,7 +41,10 @@ async function get_single_crowd_fund(name) {
         }
         // in the case of any other error
         //(which is most likely because there isn't a crowd fund that exists with the name tht was passed in as a parameter)
-        else {window.alert("There Is No CrowdFund With That Name")};
+        else {
+            start_loader(" ")
+            transaction_update("There Is No CrowdFund With That Name", "failed")
+        };
     }
 }
 
