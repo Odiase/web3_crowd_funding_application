@@ -91,22 +91,29 @@ header{
 
 // transaction loader styling
 .transaction_loader{
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     text-align: center;
-    background-color: rgb(rgba(40,40,40,.7));
+    background-color: rgba(40,40,40,.7);
     display: flex;
     flex-direction: column;
-    background-color: white;
     justify-content: center;
     align-items: center;
     z-index: 9999999999;
+    overflow: hidden;
 
     h1{
         margin-bottom: 20px;
     }
+}
+.inner_container{
+    padding: 5em;
+    background-color: white;
+    color: black;
+    border-radius: 25px;
 }
 .loader {
     border: 16px solid rgb(20,20,20); /* Light grey */
@@ -118,7 +125,18 @@ header{
     margin: auto;
   }
   
+.completed_icon{
+    font-size: 7rem;
+    color: $standard_green;
+}
+
+.failed_icon{
+    font-size: 7rem;
+    color: red;
+}
+
+// animations
   @keyframes spin {
     0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    100% { transform: rotate(360deg);}
   }

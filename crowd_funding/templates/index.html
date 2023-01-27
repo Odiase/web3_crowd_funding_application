@@ -27,6 +27,7 @@
     <!-- Custom Js scripts -->
     <script src="{% static 'scripts/web3_activities.js'%}" defer></script>
     {% endblock scripts %}
+    <script src="{% static 'scripts/general.js'%}" defer type="module"></script>
 
     {% block title %}
     <title>FundMe - Starting A CrowdFunding Has Never Been So Easy</title>
@@ -122,9 +123,20 @@
     
     <!-- Transaction Loader Container -->
     <div class="transaction_loader">
-        <h1>Your Transaction is in Progress</h1>
+        <div class="inner_container">
+            <h1>Your Transaction is in Progress</h1>
+            <div class="loader"></div>
 
-        <div class="loader"></div>
+            <!-- icon that shows when a transaction is successful -->
+            <div class="completed_icon">
+                <i class="fa fa-check"></i>
+            </div>
+
+            <!-- icon that shows when a transaction is failed -->
+            <div class="failed_icon">
+                <i class="fa fa-ban"></i>
+            </div>
+        </div>
     </div>
 </body>
 </html>
