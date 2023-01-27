@@ -99,7 +99,9 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
     // create transaction
     // console.log(web3_obj.eth.gasPrice);
     try{
-        const sender_address = get_wallet_address()
+        const sender_address = get_wallet_address();
+        // startig loader animation
+        start_loader("Transaction In Progress");
         const transaction = await contract.methods.fund(funder_name, crowd_fund_name).send({
             "from" : sender_address,
             "value" : web3_obj.utils.toWei(`${amount}`, 'ether'),
@@ -114,11 +116,15 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
             }
           }
         )
-        window.alert("Funds Sent!")
+
+        // display a success message to user
+        start_loader("")
+        transaction_update(`Transaction Successful! \n Amount of ${amount} ETH sent`, "successful")
     }
     catch(error) {
-        if (error.code == 4001) {
-            window.alert("You Rejected This Transaction.")
+        if (error.code == 4001) {  
+            start_loader("");
+            transaction_update("You Rejected This Trasaction", "failed");
         }
         else if (error.code == 4100) {
            get_wallet(`crowd_fund/${crowd_fund_name}`);
