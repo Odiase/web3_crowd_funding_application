@@ -98,4 +98,19 @@ export async function get_smart_contract(){
         transaction_update("An Error Occured.", "failed")
     }
 }
+
+export function gas_estimate(encoded_data) {
+    // Getting Estimated Gas Fee
+    let gas_estimate;
+    let web3_obj = get_web3_object();
+
+    web3_obj.eth.estimateGas({to: contract_address, data: encoded_data}, (error, estimate) => {
+        if(!error) {
+            gas_estimate = estimate;
+        } else {
+        }
+    });
+
+    return gas_estimate
+}
 //This is a Crowd Fund To SUpport the refugges and the victims From the Ukraine/Russia War that is ongoing an also provide immigration support for those who  needs it and also food, shelter, clothing
