@@ -28,6 +28,7 @@ export function transaction_update(message, status) {
 export function start_loader(message) {
     // display the loader container
     transaction_loader_container.style.opacity = "1";
+    transaction_loader_container.style.zIndex = "9999999999";
     transaction_text.textContent = message
     loader.style.display = "block";
     transaction_completed_icon.style.display = "none";
@@ -36,6 +37,7 @@ export function start_loader(message) {
 
 export function close_loader() {
     transaction_loader_container.style.opacity = "0";
+    transaction_loader_container.style.zIndex = "-99999999999";
     loader.style.display = "block";
 }
 

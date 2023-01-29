@@ -143,12 +143,14 @@ async function withdraw_funds() {
 
     // making the transaction
     try{
+        start_loader("Transaction In Progress")
         const tx = await contract.methods.withdrawBalance(crowd_fund_name).send({from : user_address});
-        window.alert("Funds Successfully Transferred To Wallet");
+        transaction_update("Funds Successfully Withdrawn!", "successful")
     }
     catch(error){
         if (error.message.includes("User denied transaction signature") || error.code == 4001) {
-            window.alert('You Rejected The Transaction');
+            start_loader("")
+            transaction_update("You Rejected This Transaction", "failed")
         }
         else if (error.code == 4100) {
             console.log(error)
