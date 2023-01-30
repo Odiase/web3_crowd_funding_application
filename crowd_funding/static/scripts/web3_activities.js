@@ -7,10 +7,9 @@ export let contract_address = "0x258F1FBFdAC4F290f792426C17dBEf4A0B8c90B5";
 
 export function get_web3_object() {
     if(window.ethereum) {
-        // assinging web3 object to global window web3 3 variable
+        // assinging web3 object to global window.web3 variable
         window.web3 = new Web3(ethereum);
         let web3_obj = window.web3;
-        console.log("Gotten Here.")
         return web3_obj;
     }else {
         start_loader("");
@@ -24,7 +23,6 @@ export function get_web3_object() {
 export async function get_wallet(redirect_url) {
     /** Checking if a metamask extension is available and trying to access it.....of course with the user's permission */
     let web3_obj = get_web3_object();
-    console.log(web3_obj)
     
     try {
         // trying to access the user web3 account on meta mask or any other web3 provider, if any
@@ -64,6 +62,23 @@ export async function get_wallet(redirect_url) {
     }
 }
 
+export async function is_account_connected(action) {
+    let web3_obj = get_web3_object();
+    
+    // gettong connected accounts if any
+    let accounts = web3_obj.eth.getAccounts()
+    if(accounts) {
+        switch(action) {
+            case 'create' : 
+                window.location.replace(`${location.origin}/crowd_fund/create`); break;
+            default : 
+                window.location.replace(`${location.origin}`);
+        }
+    }
+    else{
+        get_wallet();
+    }
+}
 
 
 export function get_wallet_address(redirect_url){
