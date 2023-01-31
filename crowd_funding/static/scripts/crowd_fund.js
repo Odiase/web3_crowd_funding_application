@@ -1,4 +1,6 @@
 import { get_web3_object, get_wallet, get_wallet_address, get_smart_contract } from './web3_activities.js';
+import { start_loader, transaction_update } from './general.js';
+
 let crowd_fund_form = document.getElementById("crowd_fund_form");
 
 
@@ -22,16 +24,16 @@ async function create_crowd_fund()  {
     let accountAddress = get_wallet_address();
     let create_fund_form = get_form_data();
 
+    start_loader("Crowd Fund Creation In Progress.");
     contract.methods.createCrowdFundContract(create_fund_form[0], create_fund_form[2], create_fund_form[1]).send({from: accountAddress})
         .then(functionResult => {
-            console.log(functionResult)
             // submitting the form to the backend to save necessary data (image and time created)
             crowd_fund_form.submit();
         })
         .catch(async error => {
             // this runs if the user has rejected the transaction
             if (error.message.includes("User denied transaction signature") || error.code == 4001) {
-                window.alert('You Rejected The Transaction')
+                transaction_update("You Rejected The Transaction", "failed")
             }
             // this runs if no wallet has been linked to the application
             else if (error.code == 4100) {
@@ -39,7 +41,7 @@ async function create_crowd_fund()  {
                 create_crowd_fund();
             }
             else{
-                window.alert("A Crowd Fund With That Name Already Exists.")
+                transaction_update("A Crowd Fund With That Name Already Exists.", "failed");
             }
         });
 }

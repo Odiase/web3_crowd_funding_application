@@ -11,6 +11,7 @@
     <!-- custom styles -->
     <link rel="stylesheet" href="{% static 'styles/dist/general.css'%}">
     <link rel="stylesheet" href="{% static 'styles/dist/connect_wallet.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/dist/create_crowd_fund.css'%}">
     {% endblock styles %}
 
     <!-- Font Awesome Script -->
@@ -35,24 +36,29 @@
 </head>
 <body>
     {% block content %}
-    <br><br><br><br><br><br><br><br><br><br>
-    <form action="" id="crowd_fund_form" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="">Name</label>
-        <input type="text" placeholder="crowd fund name" name="fund_name" required>
-        <br>
-        <label for="">Owner's Name</label>
-        <input type="text" value="{{request.user.username}}" name="owner_name" required>
-        <br>
-        <label for="">Image</label>
-        <input type="file" name="image" id="" accept="image/*" required>
-        <br>
-        <label for="">Description</label>
-        <textarea name="description" id="" cols="30" rows="10" required></textarea>
-        <br>
-        <button type="submit">Create Crowd Fund</button>
-    </form>
     
+    <section class="form_wrapper">
+        <div class="inner_form_wrapper">
+            <h1>Create Crowd Fund</h1>
+            <form action="" id="crowd_fund_form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="">Name</label>
+                <input type="text" placeholder="crowd fund name" name="fund_name" required>
+                <br>
+                <label for="">Owner's Name</label>
+                <input type="text" value="{{request.user.username}}" name="owner_name" required readonly>
+                <br>
+                <label for="">Image</label>
+                <input type="file" name="image" id="" accept="image/*" required>
+                <br>
+                <label for="">Description</label>
+                <textarea name="description" id="" cols="30" rows="10" required></textarea>
+                <br>
+                <button type="submit">Create Crowd Fund</button>
+            </form>
+        </div>
+    </section>
+
     {% endblock content %}
 </body>
 </html>

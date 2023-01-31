@@ -63,6 +63,8 @@ export async function get_wallet(redirect_url) {
 }
 
 export async function is_account_connected(action) {
+    /** Checks if a user account is connected to the application */
+
     let web3_obj = get_web3_object();
     
     // gettong connected accounts if any
@@ -128,4 +130,3 @@ export function gas_estimate(encoded_data) {
 
     return gas_estimate
 }
-//This is a Crowd Fund To SUpport the refugges and the victims From the Ukraine/Russia War that is ongoing an also provide immigration support for those who  needs it and also food, shelter, clothing
