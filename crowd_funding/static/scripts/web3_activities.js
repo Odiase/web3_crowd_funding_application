@@ -18,23 +18,21 @@ export function get_web3_object() {
 }
 
 
-
-
 export async function get_wallet(redirect_url) {
     /** Checking if a metamask extension is available and trying to access it.....of course with the user's permission */
     let web3_obj = get_web3_object();
     
     try {
-        // trying to access the user web3 account on meta mask or any other web3 provider, if any
-
         // starting loader animation
         start_loader("Requesting Permission")
-
          var accounts = await web3_obj.eth.requestAccounts();
+
          // redirects the user to the home page.
          if (accounts) {
-            // showing a success message to the user
+            // showing a success message to the user and update wallet balance
             transaction_update(`Wallet ${accounts} Connected Successfully`)
+            show_wallet_info(accounts[0]);
+
             // saving the account in local storage
             localStorage.setItem('account', accounts[0]);
 
@@ -62,23 +60,19 @@ export async function get_wallet(redirect_url) {
     }
 }
 
-export async function is_account_connected(action) {
+export async function is_account_connected() {
     /** Checks if a user account is connected to the application */
 
     let web3_obj = get_web3_object();
     
-    // gettong connected accounts if any
-    let accounts = web3_obj.eth.getAccounts()
+    // getting connected accounts if any
+    let accounts = await web3_obj.eth.getAccounts()
+    console.log(accounts)
     if(accounts) {
-        switch(action) {
-            case 'create' : 
-                window.location.replace(`${location.origin}/crowd_fund/create`); break;
-            default : 
-                window.location.replace(`${location.origin}`);
-        }
+        return true;
     }
     else{
-        get_wallet();
+        return false
     }
 }
 
@@ -129,4 +123,29 @@ export function gas_estimate(encoded_data) {
     });
 
     return gas_estimate
+}
+
+export async function show_wallet_info(account) {
+    let web3_obj = get_web3_object();
+    let balance;
+
+    // DOM ELEMENTS
+    let balance_element = document.querySelector(".eth_balance");
+    let wallet_element = document.querySelector(".wallet_address");
+
+    let eth_balance = web3_obj.eth.getBalance(account, function(error, result) {
+        if (error) {
+            start_loader("")
+            transaction_update("An Error Occured While Trying To Get Your Wallet Balance");
+        } else {
+            // update balance field
+            let converted_eth = web3.utils.fromWei(result, "ether");
+            // changng to integer, so i can get the 2 digits after the dp
+            converted_eth = Math.floor(converted_eth * 100) / 100;
+
+            balance_element.textContent = converted_eth + " ETH";
+            let account_length = account.length;
+            wallet_element.textContent = `${account[0]}${account[1]}${account[2]}${account[3]}${account[4]}${account[5]}....${account[account_length-4]}${account[account_length-3]}${account[account_length-2]}${account[account_length-1]}`
+        }
+    })
 }

@@ -157,6 +157,96 @@ header{
     }
 }
 
+.account_info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid $standard_green;
+    padding: 8px;
+    border-radius: 25px;
+    margin-right: 15px;
+    position: relative;
+
+    .icon{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 3px solid white;
+        margin-right: 10px;
+        background: linear-gradient(orange, orangered, rgb(216, 15, 49));
+    }
+    .downward_icon{
+        display: block;
+        margin: 0px 10px;
+        font-size: 1.5rem;
+        color: rgb(150,150,150);
+        transition: .3s;
+
+        &:hover{
+            color: white;
+        }
+    }
+
+    // account menu styling
+    .account_menu{
+        position: absolute;
+        min-width: 300px;
+        padding: 20px 15px;
+        bottom: -300px;
+        left: -120px;
+        background-color: black;
+        color: white;
+        border: 3px solid $standard_green;
+        border-radius: 20px;
+
+        .address{
+            display: flex;
+        }
+
+        .balance_sect{
+            margin-top: 25px;
+            text-align: center;
+
+            h4{
+                color: rgb(150,150,150);
+            }
+            h1{
+                margin-top: 5px;
+                font-size: 2rem;
+            }
+        }
+
+        .other_info_sect{
+            margin-top: 25px;
+            
+            button{
+                width: 90%;
+                color: white;
+                background: linear-gradient(orangered, orange);
+                border-radius: 25px;
+                border: none;
+                display: block;
+                margin: auto;
+                margin-bottom: 20px;
+                transition: .3s;
+
+                a{
+                    display: block;
+                    padding: 17px 28px;
+                    width: 100%;
+                    color: white;
+                    font-weight: bold;
+                    transition: .3s;
+                }
+
+                &:hover{
+                    background: linear-gradient(orange, orangered);
+                }
+            }
+        }
+    }
+}
+
 // animations
   @keyframes spin {
     0% { transform: rotate(0deg); }

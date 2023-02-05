@@ -123,6 +123,7 @@ async function fund_a_crowd_fund(funder_name, crowd_fund_name, amount){
 
 }
 
+
 async function withdraw_funds() {
     // user's address
     let user_address = get_wallet_address();
@@ -150,7 +151,8 @@ async function withdraw_funds() {
     }
 }
 
-//event listener
+
+//event listeners
 window.addEventListener("load", crowd_fund_exists(crowd_fund_name));
 send_fund_form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -158,3 +160,4 @@ send_fund_form.addEventListener("submit", (e) => {
 });
 
 withdraw_btn.addEventListener("click", () => withdraw_funds());
+

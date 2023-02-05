@@ -21,12 +21,13 @@
 
     <!-- Scripts -->
     <script src="{% static 'scripts/general.js'%}" defer type="module"></script>
+    <script src="{% static 'scripts/event_listeners.js'%}" defer type="module"></script>
     {% block scripts %}
-    <!-- Including the web3 library in the HTML file -->
-     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <!-- Including the web3 library in the HTML file -->
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 
-    <!-- Custom Js scripts -->
-    <script src="{% static 'scripts/web3_activities.js'%}" defer type="module"></script>
+        <!-- Custom Js scripts -->
+        <script src="{% static 'scripts/web3_activities.js'%}" defer type="module"></script>
     {% endblock scripts %}
 
     {% block title %}
@@ -63,6 +64,31 @@
                     <i class="fa fa-building-columns"></i></span>
                     <a href="">CrowdFunds</a>
                 </li> -->
+
+                <div class="account_info">
+                    <span class="icon"></span>
+                    <h3 class="wallet_address"></h3>
+                    <span class="downward_icon"><i class="fa fa-angle-down"></i></span>
+
+                    <!-- account menu -->
+                    <div class="account_menu">
+                        <div class="account_header">
+                            <div class="address">
+                                <span class="icon"></span>
+                                <h3 class="wallet_address">0xd76....9828</h3>
+                            </div>
+                        </div>
+
+                        <div class="balance_sect">
+                            <h4>ETH Balance</h3>
+                            <h1 class="eth_balance"></h1>
+                        </div>
+
+                        <div class="other_info_sect">
+                            <button><a href="">Create A CrowdFund</a></button>
+                        </div>
+                    </div>
+                </div>
             </ul>
         </nav>
     </header>
