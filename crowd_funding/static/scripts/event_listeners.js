@@ -6,8 +6,8 @@ let connect_btn = document.querySelector(".connect_wallet_btn");
 // event listeners
 
 if (connect_btn) {
-    connect_btn.addEventListener("click", () => {
-        if (is_account_connected()) {
+    connect_btn.addEventListener("click", async () => {
+        if (await is_account_connected()) {
             window.location.replace(`${location.origin}/crowd_fund/create`);
         }
         else{
@@ -16,9 +16,8 @@ if (connect_btn) {
     })
 }
 
-window.addEventListener("load", () =>{
-    if (is_account_connected()) {
-        console.log("User is connected")
+window.addEventListener("load", async () =>{
+    if (await is_account_connected()) {
         show_wallet_info(localStorage.getItem('account'));
     }
     else{

@@ -67,11 +67,13 @@ export async function is_account_connected() {
     
     // getting connected accounts if any
     let accounts = await web3_obj.eth.getAccounts()
-    console.log(accounts)
-    if(accounts) {
+    localStorage.setItem('account', accounts[0])
+    if(accounts.length > 0) {
         return true;
     }
     else{
+        // removing stored account in local storage to get rid of errors
+        localStorage.removeItem('account')
         return false
     }
 }
@@ -131,7 +133,7 @@ export async function show_wallet_info(account) {
 
     // DOM ELEMENTS
     let balance_element = document.querySelector(".eth_balance");
-    let wallet_element = document.querySelector(".wallet_address");
+    let wallet_element = document.querySelectorAll(".wallet_address");
 
     let eth_balance = web3_obj.eth.getBalance(account, function(error, result) {
         if (error) {
@@ -145,7 +147,10 @@ export async function show_wallet_info(account) {
 
             balance_element.textContent = converted_eth + " ETH";
             let account_length = account.length;
-            wallet_element.textContent = `${account[0]}${account[1]}${account[2]}${account[3]}${account[4]}${account[5]}....${account[account_length-4]}${account[account_length-3]}${account[account_length-2]}${account[account_length-1]}`
+
+            for(let i=0; i < wallet_element.length; i++) {
+                wallet_element[i].textContent = `${account[0]}${account[1]}${account[2]}${account[3]}${account[4]}${account[5]}....${account[account_length-4]}${account[account_length-3]}${account[account_length-2]}${account[account_length-1]}`
+            }
         }
     })
 }

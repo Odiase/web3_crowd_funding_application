@@ -46,11 +46,6 @@
                     &nbsp;
                     <a href="{% url 'sign_out' %}">Sign Out</a>
                 </li>
-                <li>
-                    <span><i class="fa fa-piggy-bank"></i></span>
-                    &nbsp;
-                    <a href=" {% url 'connect_wallet' %} ">Create A CrowdFund</a>
-                </li>
                 {% else %}
 
                 <li>
@@ -75,7 +70,7 @@
                         <div class="account_header">
                             <div class="address">
                                 <span class="icon"></span>
-                                <h3 class="wallet_address">0xd76....9828</h3>
+                                <h3 class="wallet_address"></h3>
                             </div>
                         </div>
 
@@ -85,7 +80,7 @@
                         </div>
 
                         <div class="other_info_sect">
-                            <button><a href="">Create A CrowdFund</a></button>
+                            <button><a href="{% url 'connect_wallet' %}">Create A CrowdFund</a></button>
                         </div>
                     </div>
                 </div>
@@ -101,6 +96,12 @@
         <div class="inner_wrapper">
             <div class="hero_text">
                 <h2>Starting A CrowdFunding Has Never Been So Easy. </h2>
+                <br>
+                <button class="create_btn">
+                    <span><i class="fa fa-piggy-bank"></i></span>
+                    &nbsp;
+                    <a href=" {% url 'connect_wallet' %} ">Create A CrowdFund</a>
+                </button>
             </div>
             <div class="hero_img">
 

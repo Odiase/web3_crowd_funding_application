@@ -5,6 +5,9 @@ let transaction_completed_icon = document.querySelector(".completed_icon");
 let transaction_failed_icon = document.querySelector(".failed_icon");
 let cancel_loader_btn = document.querySelector(".hide_loader");
 
+let toggle_icon = document.querySelector(".downward_icon");
+
+
 
 export function transaction_update(message, status) {
     // Display the transaction status message to the user
@@ -41,6 +44,21 @@ export function close_loader() {
     loader.style.display = "block";
 }
 
+function wallet_info_toggle() {
+    let info_container = document.querySelector(".account_menu");
+
+    if (info_container.style.display == "none") {
+        info_container.style.display = "block";
+        info_container.style.transform = "translateY(0)"
+        toggle_icon.style.transform = "rotate(180deg)";
+    }else{
+        info_container.style.display = "none";
+        info_container.style.transform = "translateY(-80px)"
+        toggle_icon.style.transform = "rotate(360deg)";
+    }
+}
+
 cancel_loader_btn.addEventListener("click", () => {close_loader()});
+toggle_icon.addEventListener("click", () => {wallet_info_toggle()})
 
 // transaction_completed("This Transaction Failed", "failed")

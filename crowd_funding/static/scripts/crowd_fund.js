@@ -25,6 +25,7 @@ async function create_crowd_fund()  {
     let create_fund_form = get_form_data();
 
     start_loader("Crowd Fund Creation In Progress.");
+    console.log("loader started")
     contract.methods.createCrowdFundContract(create_fund_form[0], create_fund_form[2], create_fund_form[1]).send({from: accountAddress})
         .then(functionResult => {
             // submitting the form to the backend to save necessary data (image and time created)

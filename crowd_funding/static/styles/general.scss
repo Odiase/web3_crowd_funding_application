@@ -21,6 +21,8 @@ a{
 body{
     background-color: black;
     color: white;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 li{
@@ -161,11 +163,12 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid $standard_green;
+    border: 2px solid white;
     padding: 8px;
     border-radius: 25px;
     margin-right: 15px;
     position: relative;
+    opacity: 1;
 
     .icon{
         width: 30px;
@@ -198,6 +201,9 @@ header{
         color: white;
         border: 3px solid $standard_green;
         border-radius: 20px;
+        transform: translateY(-80px);
+        transition: .5s;
+        display: none;
 
         .address{
             display: flex;
@@ -244,6 +250,24 @@ header{
                 }
             }
         }
+    }
+}
+.create_btn{
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+    padding: 20px 60px;
+    border: 2px solid white;
+    cursor: pointer;
+    background-color: rgb(143, 10, 10);
+
+    span{
+        color: white;
+    }
+
+    a{
+        color: white;
+        font-size: 1.1rem;
     }
 }
 
