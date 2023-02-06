@@ -90,6 +90,21 @@ header{
         }
     }
 }
+.connect_wallet_btn2{
+    padding: 10px 25px;
+    background: linear-gradient(orange, orangered);
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: .4s;
+
+    &:hover{
+        background: linear-gradient(orangered, orange);
+    }
+}
 
 // transaction loader styling
 .transaction_loader{
