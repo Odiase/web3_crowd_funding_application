@@ -24,13 +24,13 @@ export async function get_wallet(redirect_url) {
     
     try {
         // starting loader animation
-        start_loader("Requesting Permission")
+        start_loader("Requesting Permission To Connect To Wallet, Complete the connection in the Metamask Pop-up")
          var accounts = await web3_obj.eth.requestAccounts();
 
          // redirects the user to the home page.
          if (accounts) {
             // showing a success message to the user and update wallet balance
-            transaction_update(`Wallet ${accounts} Connected Successfully`)
+            transaction_update(`${accounts} Connected Successfully`)
             show_wallet_info(accounts[0]);
 
             // saving the account in local storage

@@ -13,7 +13,7 @@ export function transaction_update(message, status) {
     // Display the transaction status message to the user
     transaction_text.textContent = message;
 
-    // checking the status message to know the right icon to display
+    // checking the status of the message to know the right icon to display
     if (status == "successful") {
         // display successful icon
         loader.style.display = "none";

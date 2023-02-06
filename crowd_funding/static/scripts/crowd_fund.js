@@ -32,6 +32,7 @@ async function create_crowd_fund()  {
             crowd_fund_form.submit();
         })
         .catch(async error => {
+            console.log(error)
             // this runs if the user has rejected the transaction
             if (error.message.includes("User denied transaction signature") || error.code == 4001) {
                 transaction_update("You Rejected The Transaction", "failed")
